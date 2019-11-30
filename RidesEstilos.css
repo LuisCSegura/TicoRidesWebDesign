@@ -1,0 +1,297 @@
+body {
+    font-family: Century Gothic;
+    background: #f5f5f5;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+
+main {
+    text-align: center;
+}
+
+.title_one {
+    margin-top: 120px;
+    margin-right: 100px;
+    margin-left: 100px;
+    width: auto;
+    background: none;
+    padding: 10px;
+    display: flex;
+    border-bottom: solid #ccc 3px;
+}
+
+i {
+    color: #fff;
+}
+
+h2 {
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 3px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+    background: #333;
+}
+
+h1 {
+    font-size: 50px;
+    color: #777;
+    width: 70%;
+    text-align: left;
+    font-style: italic;
+    font-weight: 100;
+
+}
+
+#username {
+    margin-top: 28px;
+    font-size: 20px;
+    color: #777;
+    width: 30%;
+    text-align: right;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.contenedor {
+    width: auto;
+    margin-left: 90px;
+    margin-right: 90px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    background: #fafafa;
+    border-radius: 25px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+    border: none;
+    padding: 25px;
+}
+
+table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+th,
+td {
+    width: auto;
+    text-align: center;
+    border-bottom: ;
+    color: #000;
+    padding: 10px;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+th,
+td[class="table_header"] {
+    background: none;
+    color: #000;
+    border: none;
+    font-weight: bold;
+}
+
+label {
+    width: 30%;
+    font-size: 14px;
+    color: #777;
+    font-weight: bold;
+}
+
+.input_contenedor {
+    margin-top: 10px;
+    width: auto;
+    text-align: left;
+    background: none;
+    padding: 0px;
+    padding-bottom: 20px;
+}
+
+input[type="text"],
+input[type="time"] {
+    margin-top: 10px;
+    font-family: Century Gothic;
+    color: #000;
+    font-size: 15px;
+    font-weight: 700;
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    padding-top: 1px;
+    width: 15%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0, 0, 0, 0.0);
+    border-radius: 3px;
+    border: solid #000 2px;
+}
+
+.container:hover input ~ .checkmark {
+    border: solid #aaa 2px;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: none;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 5px;
+    top: 0.5px;
+    width: 4px;
+    height: 8px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#con_checks {
+    display: flex;
+}
+
+textarea {
+    margin-top: 10px;
+    font-family: Century Gothic;
+    color: #000;
+    font-size: 15px;
+    font-weight: 700;
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+.button {
+    margin-top: 15px;
+    margin-bottom: 10pxpx;
+    border: none;
+    width: 100%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    background: #e04;
+    padding: 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: Century Gothic;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+
+}
+
+.button:hover {
+    background: #f05;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.button_container {
+    display: flex;
+}
+
+.edit,
+.del {
+    font-size: 15px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.edit:hover {
+    color: #0aa;
+}
+
+.del:hover {
+    color: #f04;
+}
+footer{
+    text-align: center;
+    padding: 40px
+}
+
+@media screen and (max-width:800px) {
+    h1 {
+        font-size: 20px;
+        margin-top: 15px
+    }
+
+    #username {
+        font-size: 8px;
+        letter-spacing: 0px;
+    }
+
+    #con_checks {
+        display: block;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .contenedor {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .title_one {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+}

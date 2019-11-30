@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Century Gothic;
+
+}
+
+header{
+    width: 100%;
+    background: none;
+    padding:0px;
+    position: fixed;
+    margin-top: 0px;
+    padding: 20px;
+    text-align: center;
+    z-index: 100;
+}
+.menu_contenedor{
+    text-align: left;
+    width: 100%;
+    background: rgba(255,255,255,1);
+    padding:0px;
+    overflow: hidden;
+    margin:auto;
+    border-radius: 50px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+}
+.img_logo{
+    width: 200px;
+    margin: 23px 30px 20px 30px;
+    opacity: 30
+
+}
+#check{
+    display: none;
+}
+.icon_menu{
+    font-weight: bolder;
+    color:#000;
+    font-size: 30px;
+    display: none;
+}
+.menu{
+    width: auto;
+    float: right;
+    margin-top: 35px;
+    margin-right: 35px;
+    font-size: 14px;
+    font-weight: 100;
+    background: none;
+}
+.menu ul{
+     display: flex;
+
+}
+.menu li{
+    list-style: none;
+}
+.menu li a{
+    padding: 35px;
+    text-decoration: none;
+    color:#000;
+    border-left: solid 2px #ccc;
+}
+#last_item{
+    border-right: solid 2px #ccc;
+}
+
+.menu li a:hover{
+    color:#ccc;
+
+
+}
+@media screen and (max-width:930px){
+
+    .icon_menu{
+        display: block;
+        float: right;
+        padding: 22px;
+        width: 60px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+    .icon_menu:hover{
+        color:#ccc;
+    }
+    .menu ul{
+        flex-direction: column;
+    }
+    .menu{
+        float:left;
+        margin-top: 0px;
+        width:  100%;
+        background:none;
+        overflow: hidden;
+        height: 0px;
+    }
+    .menu li{
+        background: none;
+    }
+    .menu li a{
+        display: block;
+        text-align: center;
+        border-left: none;
+        border-right: none;
+        border-top: solid 2px #ccc;
+        background: none;
+
+    }
+    #last_item{
+        border:none;
+        border-top: solid 2px  #ccc;
+        border-bottom:  solid 2px  #ccc;
+    }
+    #check:checked ~ .menu{
+    height: 284px;
+}
+.contenedor{
+    margin-top: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

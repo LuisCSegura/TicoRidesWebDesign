@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TicoRides - Cuenta</title>
+    <link rel=stylesheet href="MenuEstilos.css">
+    <link rel=stylesheet href="RidesEstilos.css">
+</head>
+
+<body>
+   <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
+    <header>
+       <div class="menu_contenedor">
+
+        <img src="images/TicoRidesLogoBlack.png" class="img_logo">
+        <input type="checkbox" id="check">
+        <label for="check" class="icon_menu">≡</label>
+        <nav class="menu">
+            <ul>
+                <li><a class="link" href="Inicio.html">
+                        BUSCAR RIDES</a></li>
+                <li><a href="Rides.html">RIDES</a></li>
+                <li><a id="last_item" href="Configuracion.html">CONFIGURACIÓN</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <br>
+    <!--CURPO PRINCIPAL DE LA PAGINA CON TODOS LOS COMPONENTES ESTATICOS-->
+    <main>
+        <form class="FrmDashboard" action="NuevoRide.html">
+           <div class="title_one">
+              <h1>RIDES</h1>
+                <p id="username">
+                LuisKa777</p>
+           </div>
+            <div class="contenedor">
+
+            <h2>TODOS SUS RIDES ACTIVOS</h2>
+                <table>
+                    <tr>
+                        <td class="table_header">NOMBRE</td>
+                        <td class="table_header">SALIDA</td>
+                        <td class="table_header">DESTINO</td>
+                        <td class="table_header">ACCIONES</td>
+                    </tr>
+                    <tr>
+                        <td>Familia</td>
+                        <td>Aguas Zarcas</td>
+                        <td>Atenas</td>
+                        <td><a class="edit" href="EditarRide.html">EDITAR</a>
+                        <a class="del" onclick="confirm('¿Desea eliminar el registro?')"
+                     href="#">ELIMINAR</a></td>
+                    </tr>
+                    <tr>
+                        <td>PriceSmart</td>
+                        <td>Ciudad Quesada</td>
+                        <td>Alajuela</td>
+                        <td><a class="edit" href="EditarRide.html">EDITAR</a>
+                        <a class="del" onclick="confirm('¿Desea eliminar el registro?')"
+                        href="#">ELIMINAR</a></td>
+                    </tr>
+                    <tr>
+                        <td>Trabajo</td>
+                        <td>Aguas Zarcas</td>
+                        <td>Ciudad Quesada</td>
+                        <td><a class="edit" href="EditarRide.html">EDITAR</a>
+                        <a class="del" onclick="confirm('¿Desea eliminar el registro?')"
+                        href="#">ELIMINAR</a></td>
+                    </tr>
+                </table>
+                <input type="submit" value="AGREGAR RIDE" class="button">
+            </div>
+        </form>
+    </main>
+    <!--PIE DE PAGINA CON INFORMACIÓN RELEVANTE-->
+    <footer>
+        <p class="small_letter">Todos los derechos reservados TICORIDES S.A COPIRIGHT 2019</p>
+    </footer>
+</body>
+</html>
