@@ -83,7 +83,7 @@
                     "<td>"+rides[i].partida+"</td>"+
                     "<td>"+rides[i].destino+"</td>"+
                     "<td>"+
-                    "<a type='link' class='edit' href='EditarRide.html'>EDITAR</a>"+
+                    "<a type='link' class='edit' id='"+ rides[i].nombre+"' href='EditarRide.html'>EDITAR</a>"+
                     "<br/><a class='del' id='"+ rides[i].nombre+"' onclick='eliminar_ride(this)'>ELIMINAR</a>"+
                     "</td>";
                     tablebody.appendChild(row);
