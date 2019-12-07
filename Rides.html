@@ -1,81 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>TicoRides - Cuenta</title>
-    <link rel=stylesheet href="MenuEstilos.css">
-    <link rel=stylesheet href="RidesEstilos.css">
-</head>
+    <link rel="stylesheet" href="css/MenuEstilos.css" />
+    <link rel="stylesheet" href="css/RidesEstilos.css" />
+  </head>
 
-<body>
-   <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
+  <body onload="cargar_datos();">
+    <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
     <header>
-       <div class="menu_contenedor">
-
-        <img src="images/TicoRidesLogoBlack.png" class="img_logo">
-        <input type="checkbox" id="check">
+      <div class="menu_contenedor">
+        <img src="images/TicoRidesLogoBlack.png" class="img_logo" />
+        <input type="checkbox" id="check" />
         <label for="check" class="icon_menu">≡</label>
         <nav class="menu">
-            <ul>
-                <li><a class="link" href="Inicio.html">
-                        BUSCAR RIDES</a></li>
-                <li><a href="Rides.html">RIDES</a></li>
-                <li><a id="last_item" href="Configuracion.html">CONFIGURACIÓN</a></li>
-            </ul>
+          <ul>
+            <li><a class="link" href="Inicio.html"> BUSCAR RIDES</a></li>
+            <li><a href="Rides.html">RIDES</a></li>
+            <li>
+              <a id="last_item" href="Configuracion.html">CONFIGURACIÓN</a>
+            </li>
+          </ul>
         </nav>
-        </div>
+      </div>
     </header>
-    <br>
+    <br />
     <!--CURPO PRINCIPAL DE LA PAGINA CON TODOS LOS COMPONENTES ESTATICOS-->
     <main>
-        <form class="FrmDashboard" action="NuevoRide.html">
-           <div class="title_one">
-              <h1>RIDES</h1>
-                <p id="username">
-                LuisKa777</p>
-           </div>
-            <div class="contenedor">
+      <form class="FrmDashboard" id="FrmRides" action="NuevoRide.html">
+        <div class="title_one">
+          <h1>RIDES</h1>
+          <p id="username">
+            USERNAME
+          </p>
+        </div>
+        <div class="contenedor">
+          <h2>TODOS SUS RIDES ACTIVOS</h2>
+          <table>
+            <thead>
+              <tr>
+                <td class="table_header">NOMBRE</td>
+                <td class="table_header">SALIDA</td>
+                <td class="table_header">DESTINO</td>
+                <td class="table_header">ACCIONES</td>
+              </tr>
+            </thead>
+            <tbody id="tRidesBody">
 
-            <h2>TODOS SUS RIDES ACTIVOS</h2>
-                <table>
-                    <tr>
-                        <td class="table_header">NOMBRE</td>
-                        <td class="table_header">SALIDA</td>
-                        <td class="table_header">DESTINO</td>
-                        <td class="table_header">ACCIONES</td>
-                    </tr>
-                    <tr>
-                        <td>Familia</td>
-                        <td>Aguas Zarcas</td>
-                        <td>Atenas</td>
-                        <td><a class="edit" href="EditarRide.html">EDITAR</a>
-                        <a class="del" onclick="confirm('¿Desea eliminar el registro?')"
-                     href="#">ELIMINAR</a></td>
-                    </tr>
-                    <tr>
-                        <td>PriceSmart</td>
-                        <td>Ciudad Quesada</td>
-                        <td>Alajuela</td>
-                        <td><a class="edit" href="EditarRide.html">EDITAR</a>
-                        <a class="del" onclick="confirm('¿Desea eliminar el registro?')"
-                        href="#">ELIMINAR</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trabajo</td>
-                        <td>Aguas Zarcas</td>
-                        <td>Ciudad Quesada</td>
-                        <td><a class="edit" href="EditarRide.html">EDITAR</a>
-                        <a class="del" onclick="confirm('¿Desea eliminar el registro?')"
-                        href="#">ELIMINAR</a></td>
-                    </tr>
-                </table>
-                <input type="submit" value="AGREGAR RIDE" class="button">
-            </div>
-        </form>
+            </tbody >
+            
+          </table>
+
+          <input type="submit" value="AGREGAR RIDE" class="button" />
+        </div>
+      </form>
     </main>
     <!--PIE DE PAGINA CON INFORMACIÓN RELEVANTE-->
     <footer>
-        <p class="small_letter">Todos los derechos reservados TICORIDES S.A COPIRIGHT 2019</p>
+      <p class="small_letter">
+        Todos los derechos reservados TICORIDES S.A COPIRIGHT 2019
+      </p>
     </footer>
-</body>
+    <script src="js/App.js"></script>
+    <script>
+      function cargar_datos() {
+        const sesion = obtener_sesion();
+
+        if (sesion == "") {
+          location.href = "InicioSesion.html";
+        } else {
+          document.getElementById("username").innerHTML = sesion;
+            const rides=obtener_rides();
+            const tablebody = document.getElementById("tRidesBody");
+            if(rides.length>0){
+
+                for (i = 0; i < rides.length; i++) {
+                  if(rides[i]!=null){
+
+                    const row=document.createElement("tr");
+                    row.innerHTML="<td>"+rides[i].nombre+"</td>"+
+                    "<td>"+rides[i].partida+"</td>"+
+                    "<td>"+rides[i].destino+"</td>"+
+                    "<td>"+
+                    "<a type='link' class='edit' href='EditarRide.html'>EDITAR</a>"+
+                    "<br/><a class='del' id='"+ rides[i].nombre+"' onclick='eliminar_ride(this)'>ELIMINAR</a>"+
+                    "</td>";
+                    tablebody.appendChild(row);
+                  }
+                }
+            }else{
+                    tablebody.innerHTML="<tr>No tiene rides activos en este momento</tr>";
+            }
+          }
+        }
+      
+    </script>
+  </body>
 </html>

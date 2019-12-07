@@ -21,20 +21,16 @@ main {
     border-bottom: solid #ccc 3px;
 }
 
-i {
-    color: #fff;
-}
-
 h2 {
     color: #fff;
     text-align: center;
-    font-weight: 700;
+    font-weight: normal;
     font-size: 25px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
-    letter-spacing: 3px;
+    letter-spacing: 0px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
@@ -250,10 +246,12 @@ textarea {
     color: #000;
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .edit:hover {
     color: #0aa;
+    
 }
 
 .del:hover {

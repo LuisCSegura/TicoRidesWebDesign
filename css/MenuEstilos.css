@@ -114,7 +114,7 @@ header{
         border-bottom:  solid 2px  #ccc;
     }
     #check:checked ~ .menu{
-    height: 284px;
+    height: 320px;
 }
 .contenedor{
     margin-top: 0px;

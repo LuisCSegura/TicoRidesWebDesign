@@ -1,52 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>TicoRides - Login</title>
-    <link rel="stylesheet" href="MenuEstilos.css">
-    <link rel=stylesheet href="LogRegEstilos.css">
-</head>
-<body>
-  <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
-   <header>
-
-    </header>
-    <br>
-    <!--CURPO PRINCIPAL DE LA PAGINA CON TODOS LOS COMPONENTES ESTATICOS-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>TicoRides - Registro</title>
+    <link rel="stylesheet" href="css/MenuEstilos.css" />
+    <link rel="stylesheet" href="css/LogRegEstilos.css" />
+  </head>
+  <body>
+    <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
+    <header></header>
+    <br />
+    <!--CUERPO PRINCIPAL DE LA PAGINA CON TODOS LOS COMPONENTES ESTATICOS-->
     <main>
-    <form class="FrmRegistro" action="Login.html">
-
+      <form class="FrmRegistro" id="FrmRegistro" action="InicioSesion.html">
         <div class="contenedor">
-           <h1>Registro</h1>
-            <div class="input_contenedor">
-                <input type="text" placeholder="USUARIO" required>
-            </div>
-            <div class="input_contenedor">
-                <input type="text" placeholder="NOMBRE" >
-            </div>
-            <div class="input_contenedor">
-                <input type="text" placeholder="APELLIDOS" >
-            </div>
-            <div class="input_contenedor">
-                <input type="tel" placeholder="TELEFONO">
-            </div>
-            <div class="input_contenedor">
-                <input type="text" placeholder="CORREO" >
-            </div>
-            <div class="input_contenedor">
-                <input type="password" placeholder="CONTRASEÑA" required>
-            </div>
-            <div class="input_contenedor">
-                <input type="password" placeholder="REPETIR CONTRASEÑA" required>
-            </div>
-            <input type="submit"
-            value="REGISTRAR" class="button">
-            <p>¿Ya tiene una cuenta?<a id="iniciar_sesion" class="link" href="InicioSesion.html">
-            Inicio de Sesión</a></p>
+          <h1>Registro</h1>
+          <div class="input_contenedor">
+            <input type="text" id="usuario" placeholder="USUARIO" required />
+          </div>
+          <div class="input_contenedor">
+            <input type="text" id="nombre" placeholder="NOMBRE" />
+          </div>
+          <div class="input_contenedor">
+            <input type="text" id="apellidos" placeholder="APELLIDOS" />
+          </div>
+          <div class="input_contenedor">
+            <input type="tel" id="telefono" placeholder="TELEFONO" />
+          </div>
+          <div class="input_contenedor">
+            <input type="text" id="correo" placeholder="CORREO" />
+          </div>
+          <div class="input_contenedor">
+            <input
+              type="password"
+              id="contrasenna"
+              placeholder="CONTRASEÑA"
+              required
+            />
+          </div>
+          <div class="input_contenedor">
+            <input
+              type="password"
+              id="recontrasenna"
+              placeholder="REPETIR CONTRASEÑA"
+              required
+            />
+          </div>
+          <input type="submit" value="REGISTRAR" class="button" />
+          <p>
+            ¿Ya tiene una cuenta?<a
+              id="iniciar_sesion"
+              class="link"
+              href="InicioSesion.html"
+            >
+              Inicio de Sesión</a
+            >
+          </p>
         </div>
-    </form>
+      </form>
     </main>
-    </body>
-
+    <script src="js/App.js"></script>
+    <script>
+      /**
+       * Evento de submit del formuario de registro
+       */
+      document
+        .getElementById("FrmRegistro")
+        .addEventListener("submit", function(Event) {
+          const usuario = document.getElementById("usuario").value;
+          const nombre = document.getElementById("nombre").value;
+          const apellidos = document.getElementById("apellidos").value;
+          const telefono = document.getElementById("telefono").value;
+          const correo = document.getElementById("correo").value;
+          const contrasenna = document.getElementById("contrasenna").value;
+          const recontrasenna = document.getElementById("recontrasenna").value;
+          const nuevo_usuario = new Usuario(
+            usuario,
+            nombre,
+            apellidos,
+            telefono,
+            correo,
+            contrasenna
+          );
+          var valido = validar_usuario(nuevo_usuario, recontrasenna);
+          if (valido == "") {
+            guardar_usuario(nuevo_usuario);
+          } else {
+            alert(valido);
+            Event.preventDefault();
+          }
+        });
+    </script>
+  </body>
 </html>

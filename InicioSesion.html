@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>TicoRides - Login</title>
-    <link rel="stylesheet" href="MenuEstilos.css">
-    <link rel=stylesheet href="LogRegEstilos.css">
-</head>
-<body>
-  <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
-   <header>
-    </header>
-    <br>
+    <link rel="stylesheet" href="css/MenuEstilos.css" />
+    <link rel="stylesheet" href="css/LogRegEstilos.css" />
+  </head>
+  <body>
+    <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
+    <header></header>
+    <br />
     <!--CURPO PRINCIPAL DE LA PAGINA CON TODOS LOS COMPONENTES ESTATICOS-->
     <main>
-    <form class="FrmLogin" action="Rides.html">
-
+      <form class="FrmLogin" id="FrmLogin" action="Rides.html">
         <div class="contenedor">
-           <h1>Inicio de Sesión</h1>
-            <div class="input_contenedor">
-                <input type="text" placeholder="USUARIO" required>
-            </div>
+          <h1>Inicio de Sesión</h1>
+          <div class="input_contenedor">
+            <input type="text" id="usuario" placeholder="USUARIO" required />
+          </div>
 
-            <div class="input_contenedor">
-                <input type="password" placeholder="CONTRASEÑA" required>
-            </div>
-            <input type="submit" value="INICIAR SESIÓN" class="button">
-            <p>¿No tiene una cuenta?<a id="registro"
-            class="link" href="Registro.html"> Registro</a></p>
+          <div class="input_contenedor">
+            <input
+              type="password"
+              id="contrasenna"
+              placeholder="CONTRASEÑA"
+              required
+            />
+          </div>
+          <input type="submit" value="INICIAR SESIÓN" class="button" />
+          <p>
+            ¿No tiene una cuenta?<a
+              id="registro"
+              class="link"
+              href="Registro.html"
+            >
+              Registro</a
+            >
+          </p>
         </div>
-    </form>
+      </form>
     </main>
-    </body>
+    <script src="js/App.js"></script>
+    <script>
+      /**
+       * Evento submit del formulario logins
+       */
+      document
+        .getElementById("FrmLogin")
+        .addEventListener("submit", function(Event) {
+          var usuario = document.getElementById("usuario").value;
+          var contrasenna = document.getElementById("contrasenna").value;
 
-
+          var autenticado = autenticar_usuario(usuario, contrasenna);
+          if (autenticado) {
+            const logueado = obtener_usuario(usuario);
+          } else {
+            Event.preventDefault();
+          }
+        });
+    </script>
+  </body>
 </html>
