@@ -65,6 +65,7 @@ header{
 }
 #last_item{
     border-right: solid 2px #ccc;
+    cursor: pointer;
 }
 
 .menu li a:hover{

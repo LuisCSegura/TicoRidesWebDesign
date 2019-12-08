@@ -35,6 +35,11 @@ class Ride {
 function guardar_usuario(usuario) {
   localStorage.setItem(usuario.usuario, JSON.stringify(usuario));
 }
+function guardar_usuarioEditado(usuario, nombreAnterior) {
+  localStorage.removeItem(nombreAnterior);
+  localStorage.setItem(usuario.usuario, JSON.stringify(usuario));
+  localStorage.setItem("SesionIniciada", usuario.usuario);
+}
 function obtener_usuario(id) {
   return JSON.parse(localStorage.getItem(id));
 }
@@ -73,6 +78,13 @@ function autenticar_usuario(usuario, contrasenna) {
  */
 function obtener_sesion() {
   return localStorage.getItem("SesionIniciada");
+}
+function cerrar_sesion() {
+  var op = confirm("¿Desea salir de su cuenta?");
+  if (op == 1) {
+    localStorage.setItem("SesionIniciada", "");
+    location.href = "Inicio.html";
+  }
 }
 
 //Funciones de Rides_________________________________________________________
@@ -122,7 +134,7 @@ function eliminar_ride(boton) {
     var usu = obtener_usuario(obtener_sesion());
     for (let i = 0; i < usu.rides.length; i++) {
       if (usu.rides[i].nombre == idRide) {
-        usu.rides.splice(i,1);
+        usu.rides.splice(i, 1);
       }
     }
     guardar_usuario(usu);
@@ -131,47 +143,46 @@ function eliminar_ride(boton) {
 }
 /**
  * envia el id del ride a editar a la pagina correspondiente
- * @param {bton que ejecuta la orden} boton 
+ * @param {bton que ejecuta la orden} boton
  */
-function editar_ride(boton){
+function editar_ride(boton) {
   var pagina = "EditarRide.html";
-  pagina +=  "?ride=" + escape(boton.id);
-  location.href=pagina;
+  pagina += "?ride=" + escape(boton.id);
+  location.href = pagina;
 }
 /**
  * envia el id del ride para visualizar en la pagina correspondiente
- * @param {bton que ejecuta la orden} boton 
+ * @param {bton que ejecuta la orden} boton
  */
-function ver_ride(boton){
+function ver_ride(boton) {
   var pagina = "VerrRide.html";
-  pagina +=  "?ride=" + escape(boton.id);
-  location.href=pagina;
+  pagina += "?ride=" + escape(boton.id);
+  location.href = pagina;
 }
 /**
  * carga un ride según su nombre
- * @param {nombre del ride a cargar} idRide 
+ * @param {nombre del ride a cargar} idRide
  */
-function obtener_ridePorId(idRide){
-  const listaRides=obtener_rides();
+function obtener_ridePorId(idRide) {
+  const listaRides = obtener_rides();
   var ride;
   for (let i = 0; i < listaRides.length; i++) {
-    if(listaRides[i].nombre==idRide){
-        ride=listaRides[i];
+    if (listaRides[i].nombre == idRide) {
+      ride = listaRides[i];
     }
-    
   }
   return ride;
 }
 /**
  * guarda un ride editado
- * @param {ride a editar} ride 
+ * @param {ride a editar} ride
  */
-function guardar_rideEditado(ride){
+function guardar_rideEditado(ride) {
   var usu = obtener_usuario(obtener_sesion());
   for (let i = 0; i < usu.rides.length; i++) {
-     if(usu.rides[i].nombre==ride.nombre){
-       usu.rides[i]=ride;
-     }
-     guardar_usuario(usu);
-   }
+    if (usu.rides[i].nombre == ride.nombre) {
+      usu.rides[i] = ride;
+    }
+    guardar_usuario(usu);
+  }
 }

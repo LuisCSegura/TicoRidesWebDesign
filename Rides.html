@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>TicoRides - Cuenta</title>
+    <title>TicoRides - Rides</title>
     <link rel="stylesheet" href="css/MenuEstilos.css" />
     <link rel="stylesheet" href="css/RidesEstilos.css" />
   </head>
@@ -16,10 +16,17 @@
         <label for="check" class="icon_menu">≡</label>
         <nav class="menu">
           <ul>
-            <li><a class="link" href="Inicio.html"> BUSCAR RIDES</a></li>
-            <li><a href="Rides.html">RIDES</a></li>
             <li>
-              <a id="last_item" href="Configuracion.html">CONFIGURACIÓN</a>
+              <a href="Inicio.html"> BUSCAR RIDES</a>
+            </li>
+            <li>
+              <a href="Rides.html">RIDES</a>
+            </li>
+            <li>
+              <a href="Configuracion.html">CONFIGURACIÓN</a>
+            </li>
+            <li>
+              <a id="last_item" onclick="cerrar_sesion();">SALIR</a>
             </li>
           </ul>
         </nav>
@@ -46,10 +53,7 @@
                 <td class="table_header">ACCIONES</td>
               </tr>
             </thead>
-            <tbody id="tRidesBody">
-
-            </tbody >
-            
+            <tbody id="tRidesBody"></tbody>
           </table>
 
           <input type="submit" value="AGREGAR RIDE" class="button" />
@@ -71,30 +75,39 @@
           location.href = "InicioSesion.html";
         } else {
           document.getElementById("username").innerHTML = sesion;
-            const rides=obtener_rides();
-            const tablebody = document.getElementById("tRidesBody");
-            if(rides.length>0){
-
-                for (i = 0; i < rides.length; i++) {
-                  if(rides[i]!=null){
-
-                    const row=document.createElement("tr");
-                    row.innerHTML="<td>"+rides[i].nombre+"</td>"+
-                    "<td>"+rides[i].partida+"</td>"+
-                    "<td>"+rides[i].destino+"</td>"+
-                    "<td>"+
-                    "<a class='edit' id='"+ rides[i].nombre+"' onclick='editar_ride(this)'>EDITAR</a>"+
-                    "<br/><a class='del' id='"+ rides[i].nombre+"' onclick='eliminar_ride(this)'>ELIMINAR</a>"+
-                    "</td>";
-                    tablebody.appendChild(row);
-                  }
-                }
-            }else{
-                    tablebody.innerHTML="<tr>No tiene rides activos en este momento</tr>";
+          const rides = obtener_rides();
+          const tablebody = document.getElementById("tRidesBody");
+          if (rides.length > 0) {
+            for (i = 0; i < rides.length; i++) {
+              if (rides[i] != null) {
+                const row = document.createElement("tr");
+                row.innerHTML =
+                  "<td>" +
+                  rides[i].nombre +
+                  "</td>" +
+                  "<td>" +
+                  rides[i].partida +
+                  "</td>" +
+                  "<td>" +
+                  rides[i].destino +
+                  "</td>" +
+                  "<td>" +
+                  "<a class='edit' id='" +
+                  rides[i].nombre +
+                  "' onclick='editar_ride(this)'>EDITAR</a>" +
+                  "<br/><a class='del' id='" +
+                  rides[i].nombre +
+                  "' onclick='eliminar_ride(this)'>ELIMINAR</a>" +
+                  "</td>";
+                tablebody.appendChild(row);
+              }
             }
+          } else {
+            tablebody.innerHTML =
+              "<tr>No tiene rides activos en este momento</tr>";
           }
         }
-      
+      }
     </script>
   </body>
 </html>
