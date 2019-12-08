@@ -1,101 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>TicoRides - Cuenta</title>
-    <link rel=stylesheet href="css/MenuEstilos.css">
-    <link rel=stylesheet href="css/RidesEstilos.css">
-</head>
+    <link rel="stylesheet" href="css/MenuEstilos.css" />
+    <link rel="stylesheet" href="css/RidesEstilos.css" />
+  </head>
 
-<body>
-   <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
+  <body onload="cargar_datos();">
+    <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
     <header>
-       <div class="menu_contenedor">
-
-        <img src="images/TicoRidesLogoBlack.png" class="img_logo">
-        <input type="checkbox" id="check">
+      <div class="menu_contenedor">
+        <img src="images/TicoRidesLogoBlack.png" class="img_logo" />
+        <input type="checkbox" id="check" />
         <label for="check" class="icon_menu">≡</label>
         <nav class="menu">
-            <ul>
-                <li><a class="link" href="Inicio.html">
-                        BUSCAR RIDES</a></li>
-                <li><a href="Rides.html">RIDES</a></li>
-                <li><a id="last_item" href="Configuracion.html">CONFIGURACIÓN</a></li>
-            </ul>
+          <ul>
+            <li><a class="link" href="Inicio.html"> BUSCAR RIDES</a></li>
+            <li><a href="Rides.html">RIDES</a></li>
+            <li>
+              <a id="last_item" href="Configuracion.html">CONFIGURACIÓN</a>
+            </li>
+          </ul>
         </nav>
-        </div>
+      </div>
     </header>
-    <br>
+    <br />
     <!--CURPO PRINCIPAL DE LA PAGINA CON TODOS LOS COMPONENTES ESTATICOS-->
     <main>
-        <form class="FrmNuevoRide" action="Rides.html">
-           <div class="title_one">
-              <h1>RIDES - EDITAR</h1>
-                <p id="username">
-                LuisKa777</p>
-           </div>
-            <div class="contenedor">
+      <form class="FrmEditarRide" id="FrmEditarRide" action="Rides.html">
+        <div class="title_one">
+          <h1>RIDES - EDITAR</h1>
+          <p id="username">
+            USERNAME
+          </p>
+        </div>
+        <div class="contenedor">
+          <h2>MODIFIQUE LOS DATOS DEL RIDE</h2>
+          <div class="input_contenedor" id="inp_con1">
+            <label for="nom">NOMBRE DEL RIDE (Identificador NO editable):</label>
+            <input type="text" id="nom" readonly />
+          </div>
 
-            <h2>MODIFIQUE LOS DATOS DEL RIDE</h2>
-            <div class="input_contenedor" id="inp_con1">
-                    <label for="nom">NOMBRE DEL RIDE:</label>
-                    <input type="text" id="nom" value="Familia" required>
-                </div>
-
-                <div class="input_contenedor" id="inp_con2">
-                    <label for="sal">LUGAR DE PARTIDA:</label>
-                    <input type="text" id="sal" value="Aguas Zarcas"  required>
-                </div>
-                <div class="input_contenedor" id="inp_con2">
-                    <label for="des">LUGAR DE DESTINO:</label>
-                    <input type="text" id="des" value="Atenas"  required>
-                </div>
-                <div class="input_contenedor" id="inp_con3">
-                    <label for="about">DESCRIPCIÓN:</label>
-                    <textarea name="CRACK" id="about" cols="30" rows="10" value="CRACK">Un viaje para visitar a mi familia los fines de semana.</textarea>
-                </div>
-                <div class="input_contenedor" id="inp_con2">
-                    <label for="hou_par">HORA DE PARTIDA:</label>
-                    <input type="time" id="hou_par"  value="05:00" required>
-                </div>
-                <div class="input_contenedor" id="inp_con2">
-                    <label for="hou_lle">HORA APROXIMADA DE LLEGADA:</label>
-                    <input type="time" id="hou_lle" value="07:00" required>
-                </div>
-                <div class="input_contenedor" id="con_checks">
-                    <label for="hou_lle">DÍAS:</label>
-                </div>
-                <div class="input_contenedor" id="con_checks">
-                    <label class="container">Lun
-                    <input type="checkbox" id="lu" >
-                    <span class="checkmark"></span></label>
-                    <label class="container">Mar
-                    <input type="checkbox" id="lu" >
-                    <span class="checkmark"></span></label>
-                    <label class="container">Mie
-                    <input type="checkbox" id="lu" >
-                    <span class="checkmark"></span></label>
-                    <label class="container">Jue
-                    <input type="checkbox" id="lu" >
-                    <span class="checkmark"></span></label>
-                    <label class="container">Vie
-                    <input type="checkbox" id="lu"  >
-                    <span class="checkmark"></span></label>
-                    <label class="container">Sáb
-                    <input type="checkbox" id="lu" checked="checked" >
-                    <span class="checkmark"></span></label>
-                    <label class="container">Dom
-                    <input type="checkbox" id="lu" >
-                    <span class="checkmark"></span></label>
-                </div>
-            <div class="button_container">
-                <input type="submit" value="GUARDAR" class="button">
-            </div>
-            </div>
-        </form>
+          <div class="input_contenedor" id="inp_con2">
+            <label for="sal">LUGAR DE PARTIDA:</label>
+            <input type="text" id="sal" required />
+          </div>
+          <div class="input_contenedor" id="inp_con2">
+            <label for="des">LUGAR DE DESTINO:</label>
+            <input type="text" id="des" required />
+          </div>
+          <div class="input_contenedor" id="inp_con3">
+            <label for="about">DESCRIPCIÓN:</label>
+            <textarea name="CRACK" id="about" cols="30" rows="10"></textarea>
+          </div>
+          <div class="input_contenedor" id="inp_con2">
+            <label for="hou_par">HORA DE PARTIDA:</label>
+            <input type="time" id="hou_par" required />
+          </div>
+          <div class="input_contenedor" id="inp_con2">
+            <label for="hou_lle">HORA APROXIMADA DE LLEGADA:</label>
+            <input type="time" id="hou_lle" required />
+          </div>
+          <div class="input_contenedor" id="con_checks">
+            <label for="hou_lle">DÍAS:</label>
+          </div>
+          <div class="input_contenedor" id="con_checks">
+            <label class="container"
+              >Lun
+              <input type="checkbox" id="lu"/>
+              <span class="checkmark"></span
+            ></label>
+            <label class="container"
+              >Mar
+              <input type="checkbox" id="ma"/>
+              <span class="checkmark"></span
+            ></label>
+            <label class="container"
+              >Mie
+              <input type="checkbox" id="mi"/>
+              <span class="checkmark"></span
+            ></label>
+            <label class="container"
+              >Jue
+              <input type="checkbox" id="ju"/>
+              <span class="checkmark"></span
+            ></label>
+            <label class="container"
+              >Vie
+              <input type="checkbox" id="vi"/>
+              <span class="checkmark"></span
+            ></label>
+            <label class="container"
+              >Sáb
+              <input type="checkbox" id="sa"/>
+              <span class="checkmark"></span
+            ></label>
+            <label class="container"
+              >Dom
+              <input type="checkbox" id="do"/>
+              <span class="checkmark"></span
+            ></label>
+          </div>
+          <div class="button_container">
+            <input type="submit" value="GUARDAR" class="button" />
+          </div>
+        </div>
+      </form>
     </main>
     <!--PIE DE PAGINA CON INFORMACIÓN RELEVANTE-->
     <footer>
-        <p class="small_letter">Todos los derechos reservados TICORIDES S.A COPIRIGHT 2019</p>
+      <p class="small_letter">
+        Todos los derechos reservados TICORIDES S.A COPIRIGHT 2019
+      </p>
     </footer>
-</body>
+    <script src="js/App.js"></script>
+    <script>
+      document
+        .getElementById("FrmEditarRide")
+        .addEventListener("submit", function(Event) {
+          var nombre = document.getElementById("nom").value;
+          var partida = document.getElementById("sal").value;
+          var destino = document.getElementById("des").value;
+          var descripcion = document.getElementById("about").value;
+          var hora_partida = document.getElementById("hou_par").value;
+          var hora_llegada = document.getElementById("hou_lle").value;
+          var inputsdias = [
+            document.getElementById("lu"),
+            document.getElementById("ma"),
+            document.getElementById("mi"),
+            document.getElementById("ju"),
+            document.getElementById("vi"),
+            document.getElementById("sa"),
+            document.getElementById("do")
+          ];
+          var dias = [];
+          for (i = 0; i < inputsdias.length; i++) {
+            if (inputsdias[i].checked == true) {
+              dias.push(inputsdias[i].id);
+            }
+          }
+          const ride = new Ride(
+            nombre,
+            partida,
+            destino,
+            descripcion,
+            hora_partida,
+            hora_llegada,
+            dias
+          );
+
+          guardar_rideEditado(ride);
+        });
+
+      function cargar_datos() {
+        const sesion = obtener_sesion();
+
+        if (sesion == "") {
+          location.href = "InicioSesion.html";
+        } else {
+          document.getElementById("username").innerHTML = sesion;
+          const variable = location.search.substring(1, location.search.length);
+          const varArray = variable.split("=");
+          const nombreRide = varArray[1];
+          const ride = obtener_ridePorId(nombreRide);
+          document.getElementById("nom").value = ride.nombre;
+          document.getElementById("sal").value = ride.partida;
+          document.getElementById("des").value = ride.destino;
+          document.getElementById("about").innerHTML = ride.descripcion;
+          document.getElementById("hou_par").value = ride.hora_partida;
+          document.getElementById("hou_lle").value = ride.hora_llegada;
+          document.getElementById("lu").checked = ride.dias.includes("lu");
+          document.getElementById("ma").checked = ride.dias.includes("ma");
+          document.getElementById("mi").checked = ride.dias.includes("mi");
+          document.getElementById("ju").checked = ride.dias.includes("ju");
+          document.getElementById("vi").checked = ride.dias.includes("vi");
+          document.getElementById("sa").checked = ride.dias.includes("sa");
+          document.getElementById("do").checked = ride.dias.includes("do");
+        }
+      }
+    </script>
+  </body>
+</html>

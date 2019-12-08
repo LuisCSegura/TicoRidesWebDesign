@@ -103,6 +103,7 @@ function guardar_ride(ride) {
   usu.rides.push(ride);
   guardar_usuario(usu);
 }
+
 /**
  * obtiene los rides del usuario logueado
  */
@@ -127,4 +128,50 @@ function eliminar_ride(boton) {
     guardar_usuario(usu);
     location.reload();
   }
+}
+/**
+ * envia el id del ride a editar a la pagina correspondiente
+ * @param {bton que ejecuta la orden} boton 
+ */
+function editar_ride(boton){
+  var pagina = "EditarRide.html";
+  pagina +=  "?ride=" + escape(boton.id);
+  location.href=pagina;
+}
+/**
+ * envia el id del ride para visualizar en la pagina correspondiente
+ * @param {bton que ejecuta la orden} boton 
+ */
+function ver_ride(boton){
+  var pagina = "VerrRide.html";
+  pagina +=  "?ride=" + escape(boton.id);
+  location.href=pagina;
+}
+/**
+ * carga un ride según su nombre
+ * @param {nombre del ride a cargar} idRide 
+ */
+function obtener_ridePorId(idRide){
+  const listaRides=obtener_rides();
+  var ride;
+  for (let i = 0; i < listaRides.length; i++) {
+    if(listaRides[i].nombre==idRide){
+        ride=listaRides[i];
+    }
+    
+  }
+  return ride;
+}
+/**
+ * guarda un ride editado
+ * @param {ride a editar} ride 
+ */
+function guardar_rideEditado(ride){
+  var usu = obtener_usuario(obtener_sesion());
+  for (let i = 0; i < usu.rides.length; i++) {
+     if(usu.rides[i].nombre==ride.nombre){
+       usu.rides[i]=ride;
+     }
+     guardar_usuario(usu);
+   }
 }
