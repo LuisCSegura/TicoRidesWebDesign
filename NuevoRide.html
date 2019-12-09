@@ -10,21 +10,28 @@
   <body onload="cargar_datos();">
     <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
     <header>
-      <div class="menu_contenedor">
-        <img src="images/TicoRidesLogoBlack.png" class="img_logo" />
-        <input type="checkbox" id="check" />
-        <label for="check" class="icon_menu">≡</label>
-        <nav class="menu">
-          <ul>
-            <li><a class="link" href="Inicio.html"> BUSCAR RIDES</a></li>
-            <li><a href="Rides.html">RIDES</a></li>
-            <li>
-              <a id="last_item" href="Configuracion.html">CONFIGURACIÓN</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+        <div class="menu_contenedor">
+          <img src="images/TicoRidesLogoBlack.png" class="img_logo" />
+          <input type="checkbox" id="check" />
+          <label for="check" class="icon_menu">≡</label>
+          <nav class="menu">
+            <ul>
+              <li>
+                <a href="Inicio.html"> BUSCAR RIDES</a>
+              </li>
+              <li>
+                <a href="Rides.html">RIDES</a>
+              </li>
+              <li>
+                <a href="Configuracion.html">CONFIGURACIÓN</a>
+              </li>
+              <li>
+                <a id="last_item" onclick="cerrar_sesion();">SALIR</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
     <br />
     <!--CURPO PRINCIPAL DE LA PAGINA CON TODOS LOS COMPONENTES ESTATICOS-->
     <main>

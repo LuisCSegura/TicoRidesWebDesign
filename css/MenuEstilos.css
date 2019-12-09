@@ -73,7 +73,7 @@ header{
 
 
 }
-@media screen and (max-width:930px){
+@media screen and (max-width:970px){
 
     .icon_menu{
         display: block;
@@ -115,7 +115,7 @@ header{
         border-bottom:  solid 2px  #ccc;
     }
     #check:checked ~ .menu{
-    height: 320px;
+    height: 410px;
 }
 .contenedor{
     margin-top: 0px;

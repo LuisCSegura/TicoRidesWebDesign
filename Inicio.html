@@ -10,31 +10,32 @@
   <body>
     <!--CABECERA DE PAGINA FLOTANTE QUE CONTIENE EL MENU-->
     <header>
-      <div class="menu_contenedor">
-        <img src="images/TicoRidesLogoBlack.png" class="img_logo" />
-        <input type="checkbox" id="check" />
-        <label for="check" class="icon_menu">≡</label>
-        <nav class="menu">
-          <ul>
-            <li><a class="link" href="Inicio.html"> BUSCAR RIDES</a></li>
-
-            <li>
-              <a class="link" href="InicioSesion.html"> INICIAR SESIÓN</a>
-            </li>
-
-            <li>
-              <a id="last_item" class="link" href="Rides.html"
-                >GESTIONAR CUENTA</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+        <div class="menu_contenedor">
+          <img src="images/TicoRidesLogoBlack.png" class="img_logo" />
+          <input type="checkbox" id="check" />
+          <label for="check" class="icon_menu">≡</label>
+          <nav class="menu">
+            <ul>
+              <li>
+                <a href="Inicio.html"> BUSCAR RIDES</a>
+              </li>
+              <li>
+                <a href="Rides.html">RIDES</a>
+              </li>
+              <li>
+                <a href="Configuracion.html">CONFIGURACIÓN</a>
+              </li>
+              <li>
+                <a id="last_item" href="Registro.html">REGISTRO</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
     <br />
     <!--CURPO PRINCIPAL DE LA PAGINA CON TODOS LOS COMPONENTES ESTATICOS-->
     <main>
-      <form class="FrmBuscar">
+      <form class="FrmBuscar" id="FrmBuscar">
         <div class="contenedor">
           <h1><b>TICO</b><i>RIDES</i></h1>
           <h2>
@@ -60,24 +61,17 @@
           <input type="submit" value="B U S C A R" class="button" />
           <h2>PRINCIPALES COINCIDENCIAS</h2>
           <table>
-            <tr>
-              <td class="table_header">USUARIO</td>
-              <td class="table_header">SALIDA</td>
-              <td class="table_header">DESTINO</td>
-              <td class="table_header">ACCIONES</td>
-            </tr>
-            <tr>
-              <td>LuisKa777</td>
-              <td>Aguas Zarcas</td>
-              <td>Atenas</td>
-              <td><a class="ver" href="VerRide.html">VER</a></td>
-            </tr>
-            <tr>
-              <td>Anny22</td>
-              <td>Ciudad Quesada</td>
-              <td>Alajuela</td>
-              <td><a class="ver" href="VerRide.html">VER</a></td>
-            </tr>
+            <thead>
+              <tr>
+                <td class="table_header">USUARIO</td>
+                <td class="table_header">SALIDA</td>
+                <td class="table_header">DESTINO</td>
+                <td class="table_header">ACCIONES</td>
+              </tr>
+            </thead>
+            <tbody id="tRidesBody">
+
+            </tbody>
           </table>
         </div>
       </form>
@@ -89,5 +83,44 @@
       </p>
     </footer>
     <script src="js/App.js"></script>
+    <script>
+      document.getElementById("FrmBuscar")
+        .addEventListener("submit", function(Event) {
+          var partida = document.getElementById("partida").value;
+          var destino = document.getElementById("destino").value;
+          var rides=obtener_ridesCoincidentes(partida,destino);
+          const tablebody = document.getElementById("tRidesBody");
+          if (rides.length > 0) {
+            for (i = 0; i < rides.length; i++) {
+              if (rides[i] != null) {
+                const row = document.createElement("tr");
+                row.innerHTML =
+                  "<td>" +
+                  rides[i].usuario +
+                  "</td>" +
+                  "<td>" +
+                  rides[i].partida +
+                  "</td>" +
+                  "<td>" +
+                  rides[i].destino +
+                  "</td>" +
+                  "<td>" +
+                  "<a class='ver' id='" +
+                  rides[i].nombre +
+                  "' name='"+
+                  rides[i].usuario+
+                  "' onclick='ver_ride(this)'>VER</a>" +
+                  "</td>";
+                tablebody.appendChild(row);
+              }
+            }
+          } else {
+            tablebody.innerHTML =
+              "<tr>No hay resultados disponibles</tr>";
+          }
+
+          Event.preventDefault();
+        });
+    </script>
   </body>
 </html>

@@ -28,6 +28,7 @@ class Ride {
     this.hora_partida = hora_partida;
     this.hora_llegada = hora_llegada;
     this.dias = dias;
+    this.usuario="";
   }
 }
 //Funciones de Usuario___________________________________________________________
@@ -155,8 +156,8 @@ function editar_ride(boton) {
  * @param {bton que ejecuta la orden} boton
  */
 function ver_ride(boton) {
-  var pagina = "VerrRide.html";
-  pagina += "?ride=" + escape(boton.id);
+  var pagina = "VerRide.html";
+  pagina += "?ride=" + escape(boton.id)+"&"+"usuario="+escape(boton.name);
   location.href = pagina;
 }
 /**
@@ -185,4 +186,30 @@ function guardar_rideEditado(ride) {
     }
     guardar_usuario(usu);
   }
+}
+/**
+ * obtiene los rides que coinciden con un lugar de partida y uno de destino
+ * @param {lugar de partida del ride} partida 
+ * @param {lugar de destino del ride} destino 
+ */
+function obtener_ridesCoincidentes(partida,destino){
+  partida=partida.toLowerCase().trim();
+  destino=destino.toLowerCase().trim();
+  var coincidencias=[];
+  for (let i = 0; i < localStorage.length; i++) {
+    var llave=localStorage.key(i);
+    if(llave!="SesionIniciada"){
+      var usu=obtener_usuario(llave);
+      for (let j = 0; j < usu.rides.length; j++) {
+        var ridePartida=usu.rides[j].partida.toLowerCase().trim();
+        var rideDestino=usu.rides[j].destino.toLowerCase().trim();
+        if(ridePartida.includes(partida)&&rideDestino.includes(destino)){
+          usu.rides[j].usuario=llave;
+          coincidencias.push(usu.rides[j]);
+        }
+      }
+    }
+    
+  }
+  return coincidencias;
 }
