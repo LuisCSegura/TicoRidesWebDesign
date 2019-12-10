@@ -52,10 +52,12 @@
           <div class="input_contenedor" id="inp_con2">
             <label for="sal">LUGAR DE PARTIDA:</label>
             <input type="text" id="sal" required />
+            <div class="mapa" id="mapPartida"></div>
           </div>
           <div class="input_contenedor" id="inp_con2">
             <label for="des">LUGAR DE DESTINO:</label>
             <input type="text" id="des" required />
+            <div class="mapa" id="mapDestino"></div>
           </div>
           <div class="input_contenedor" id="inp_con3">
             <label for="about">DESCRIPCIÓN:</label>
@@ -128,7 +130,73 @@
       </p>
     </footer>
     <script src="js/App.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQjqVHih7z8rMwDCk93H3NKGJvvNAZHU&callback=initMap"
+    ></script>
     <script>
+      function initMap() {
+        var loc = new Localizacion(() => {
+          const options = {
+            center: {
+              lat: loc.latitude,
+              lng: loc.longitude
+            },
+            zoom: 15
+          };
+          var mapCont1 = document.getElementById("mapPartida");
+          var mapCont2 = document.getElementById("mapDestino");
+          const mapa1 = new google.maps.Map(mapCont1, options);
+          const mapa2 = new google.maps.Map(mapCont2, options);
+          var marker1 = new google.maps.Marker({
+            position: { lat: loc.latitude, lng: loc.longitude },
+            map: mapa1,
+            draggable: true
+          });
+          var infoWindow1 = new google.maps.InfoWindow({
+            content: "<h5>Partida</h5>"
+          });
+          marker1.addListener("click", function() {
+            infoWindow1.open(mapa1, marker1);
+          });
+          var marker2 = new google.maps.Marker({
+            position: {  lat: loc.latitude, lng: loc.longitude },
+            map: mapa2,
+            draggable: true
+          });
+          var infoWindow2 = new google.maps.InfoWindow({
+            content: "<h5>Destino</h5>"
+          });
+          marker2.addListener("click", function() {
+            infoWindow2.open(mapa2, marker2);
+          });
+          google.maps.event.addListener(marker1, "dragend", function() {
+            latitud = marker1.getPosition().lat();
+            longitud = marker1.getPosition().lng();
+            let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitud},${longitud}&key=AIzaSyAcQjqVHih7z8rMwDCk93H3NKGJvvNAZHU`;
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                var lugar = data.results[1].address_components[0].long_name;
+                document.getElementById("sal").value = lugar;
+              })
+              .catch(err => console.warn(err.message));
+          });
+          google.maps.event.addListener(marker2, "dragend", function() {
+            latitud = marker2.getPosition().lat();
+            longitud = marker2.getPosition().lng();
+            let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitud},${longitud}&key=AIzaSyAcQjqVHih7z8rMwDCk93H3NKGJvvNAZHU`;
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                var lugar = data.results[1].address_components[1].long_name;
+                document.getElementById("des").value = lugar;
+              })
+              .catch(err => console.warn(err.message));
+          });
+        });
+      }
       document
         .getElementById("FrmNuevoRide")
         .addEventListener("submit", function(Event) {

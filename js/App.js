@@ -31,6 +31,19 @@ class Ride {
     this.usuario="";
   }
 }
+class Localizacion{
+  constructor(calback){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position)=>{
+        this.latitude=position.coords.latitude;
+        this.longitude=position.coords.longitude;
+        calback();
+      });
+    }else{
+      alert("Este navegador no es compatible con geolocalización");
+    }
+  }
+}
 //Funciones de Usuario___________________________________________________________
 
 function guardar_usuario(usuario) {
@@ -213,3 +226,5 @@ function obtener_ridesCoincidentes(partida,destino){
   }
   return coincidencias;
 }
+//Funciones de Maps____________________________________________________________________
+
